@@ -1,11 +1,17 @@
 ---
 import Social from "./Social.astro";
+
+const ASTRO_VERSION = Astro.generator;
+
 ---
 
 <footer>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
+  <Social platform="twitter" username="harryitc" />
+  <Social platform="github" username="harryitc" />
+  <Social platform="youtube" username="harryitc" />
+  <div>
+    <strong>{ ASTRO_VERSION }</strong>
+  </div>
 </footer>
 
 <style>
