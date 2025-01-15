@@ -2,11 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
 const pageTitle = "Home Page";
-// export const prerender = false; // Not needed in 'server' mode
 
 ---
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome blog subtitle</h2>
   <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-  <div>Your IP address is: <span class="address">{Astro.clientAddress}</span></div>
 </BaseLayout>
