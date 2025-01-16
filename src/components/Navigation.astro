@@ -1,10 +1,31 @@
 ---
 
+import { PROCESS_ENV } from "@configs/env";
+import type {IMenu } from "@interfaces/Menu.interface";
+
+let baseUrl = PROCESS_ENV.BASE_PATH;
+if (baseUrl.endsWith('/')) {
+  baseUrl = baseUrl.slice(0, -1);
+}
+
+
+function getPath(path: string): string {
+  return (baseUrl === '/' ? '' : baseUrl) + "/" + path;
+}
+
+
+const Menus: IMenu[] = [
+  { url: getPath(""), name: "Home" },
+  { url: getPath("about"), name: "About" },
+  { url: getPath("blog"), name: "Blog" },
+  { url: getPath("tags"), name: "Tags" },
+];
 ---
 
 <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/blog">Blog</a>
-  <a href="/tags/">Tags</a>
+  {
+    Menus.map((menu: IMenu) => {
+      return <a href={menu.url}>{menu.name}</a>;
+    })
+  }
 </div>
