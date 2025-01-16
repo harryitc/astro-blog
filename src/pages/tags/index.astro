@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { MyPath } from "@utils/PathRelative";
 
 const allPosts = Object.values(
   import.meta.glob("../posts/*.md", { eager: true })
@@ -16,7 +17,7 @@ const pageTitle = "Tags Index";
     {
       tags.map((tag) => (
         <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
+          <a href={MyPath(`tags/${tag}`)}>{tag}</a>
         </p>
       ))
     }

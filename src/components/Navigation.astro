@@ -2,23 +2,13 @@
 
 import { PROCESS_ENV } from "@configs/env";
 import type {IMenu } from "@interfaces/Menu.interface";
-
-let baseUrl = PROCESS_ENV.BASE_PATH;
-if (baseUrl && baseUrl.endsWith('/')) {
-  baseUrl = baseUrl.slice(0, -1);
-}
-
-
-function getPath(path: string): string {
-  return (baseUrl === '/' ? '' : baseUrl) + "/" + path;
-}
-
+import { MyPath } from "@utils/PathRelative";
 
 const Menus: IMenu[] = [
-  { url: getPath(""), name: "Home" },
-  { url: getPath("about"), name: "About" },
-  { url: getPath("blog"), name: "Blog" },
-  { url: getPath("tags"), name: "Tags" },
+  { url: MyPath(""), name: "Home" },
+  { url: MyPath("about"), name: "About" },
+  { url: MyPath("blog"), name: "Blog" },
+  { url: MyPath("tags"), name: "Tags" },
 ];
 ---
 

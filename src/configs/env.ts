@@ -1,5 +1,12 @@
 import dotenv from "dotenv";
 
+type ProcessEnvType = {
+    SITE_URL?: string;
+    BASE_PATH?: string;
+    NODE_ENV?: string;
+    BASE_URL?: string;
+};
+
 // Note: all relative imports
 import { prettyPrintObject } from "../utils/log";
 
@@ -28,7 +35,7 @@ export const LogEnv = (): void => {
 
 };
 
-export const PROCESS_ENV = {
+const processEnvData: ProcessEnvType = {
     SITE_URL: process.env.SITE_URL,
     BASE_PATH: process.env.BASE_PATH,
     NODE_ENV: process.env.NODE_ENV,
@@ -36,9 +43,13 @@ export const PROCESS_ENV = {
     // more env variables...
 };
 
-
 console.log("[Starting Astro with config] Environment Variables:");
-prettyPrintObject(PROCESS_ENV);
+prettyPrintObject(processEnvData);
+
+export const PROCESS_ENV = processEnvData;
+
+
+
 
 // export const ProcessENV = {
 

@@ -5,6 +5,7 @@ import BlogPost from "./BlogPost.astro";
 
 // Styles
 import "../styles/global.css";
+import { MyPath } from "@utils/PathRelative";
 
 const pageTitle = "My Astro Learning Blog";
 
@@ -19,7 +20,7 @@ const allPosts = Object.values(
     {
       allPosts.map((post: any) => (
         <li>
-          <BlogPost url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate.toString().slice(0,10)}/>
+          <BlogPost url={MyPath(post.url)} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate.toString().slice(0,10)}/>
         </li>
       ))
     }
