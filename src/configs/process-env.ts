@@ -22,8 +22,8 @@ if (!nodeEnvValues.includes(NODE_ENV)) {
 
 const envFileName = `.env.${NODE_ENV}`;
 
-// Load environment variables from .env file
-dotenv.config({ path: envFileName });
+// Load environment variables from .env file and override the environment
+dotenv.config({ path: envFileName, override: true });
 
 // console.log(loadEnv(process.env.SITE_URL, process.cwd(), ""));
 

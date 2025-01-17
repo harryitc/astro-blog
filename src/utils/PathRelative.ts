@@ -1,4 +1,4 @@
-import { PROCESS_ENV } from "@configs/env";
+import { PROCESS_ENV } from "@configs/process-env";
 
 let baseUrl = PROCESS_ENV.BASE_PATH;
 if (baseUrl && baseUrl.endsWith('/')) {

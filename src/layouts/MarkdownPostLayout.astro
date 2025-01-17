@@ -12,7 +12,7 @@ const { frontmatter } = Astro.props;
     {
       frontmatter.tags.map((tag: string) => (
         <p class="tag">
-          <a href={MyPath(`/tags/${tag}`)}>{tag}</a>
+          <a href={MyPath(`tags/${tag}`)}>{tag}</a>
         </p>
       ))
     }
