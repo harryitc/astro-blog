@@ -19,7 +19,7 @@ const allPosts = AllPosts();
     {
       allPosts.map((post: any) => (
         <li>
-          <BlogPost url={post.id} title={post.title} pubDate={post.pubDate.toString().slice(0,10)}/>
+          <BlogPost url={`../${post.id}`} title={post.title} pubDate={post.pubDate.toString().slice(0,10)}/>
         </li>
       ))
     }
