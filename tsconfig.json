@@ -10,7 +10,7 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "plugins": [
@@ -20,19 +20,19 @@
     ],
     "paths": {
       "@components/*": [
-        "components/*"
+        "src/components/*"
       ],
       "@configs/*": [
-        "configs/*"
+        "src/configs/*"
       ],
       "@interfaces/*": [
-        "interfaces/*"
+        "src/interfaces/*"
       ],
       "@utils/*": [
-        "utils/*"
+        "src/utils/*"
       ],
       "@layouts/*": [
-        "layouts/*"
+        "src/layouts/*"
       ]
     }
   }
