@@ -5,13 +5,12 @@ import BlogPost from "./BlogPost.astro";
 
 // Styles
 import "../styles/global.css";
+import { AllPosts } from "src/content.config";
 import { MyPath } from "@utils/PathRelative";
 
 const pageTitle = "My Astro Learning Blog";
 
-const allPosts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
-);
+const allPosts = AllPosts();
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -20,7 +19,7 @@ const allPosts = Object.values(
     {
       allPosts.map((post: any) => (
         <li>
-          <BlogPost url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate.toString().slice(0,10)}/>
+          <BlogPost url={post.id} title={post.title} pubDate={post.pubDate.toString().slice(0,10)}/>
         </li>
       ))
     }

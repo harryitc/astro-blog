@@ -1,19 +1,18 @@
 ---
+import { AllPosts } from "src/content.config";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../BlogPost.astro";
 
 export async function getStaticPaths() {
-  const allPosts = Object.values(
-    import.meta.glob("../posts/*.md", { eager: true })
-  );
+  const allPosts = AllPosts();
 
   const uniqueTags = [
-    ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+    ...new Set(allPosts.map((post: any) => post.tags).flat()),
   ];
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post: any) =>
-      post.frontmatter.tags.includes(tag)
+      post.tags.includes(tag)
     );
     return {
       params: { tag },
@@ -34,9 +33,10 @@ const { posts } = Astro.props;
       posts.map((post: any) => (
         <li>
           <BlogPost
-            url={post.url}
-            title={post.frontmatter.title}
-            pubDate={post.frontmatter.pubDate.toString().slice(0, 10)}
+          // Vì đây là route cho nên lùi về 1 path để trỏ tới folder post
+            url={`../${post.id}`}
+            title={post.title}
+            pubDate={post.pubDate.toString().slice(0, 10)}
           />
         </li>
       ))

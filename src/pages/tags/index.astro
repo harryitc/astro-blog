@@ -1,12 +1,11 @@
 ---
+import { AllPosts } from "src/content.config";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { MyPath } from "@utils/PathRelative";
 
-const allPosts = Object.values(
-  import.meta.glob("../posts/*.md", { eager: true })
-);
+const allPosts = AllPosts();
 const tags = [
-  ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+  ...new Set(allPosts.map((post: any) => post.tags).flat()),
 ];
 
 const pageTitle = "Tags Index";
