@@ -10,14 +10,15 @@ import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-s
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import expressiveCode from 'astro-expressive-code';
 
+import tailwind from '@astrojs/tailwind';
+
 const { SITE_URL, BASE_PATH } = PROCESS_ENV;
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
   base: BASE_PATH,
-  integrations: [preact(), formatIntegration(),
-  expressiveCode({
+  integrations: [preact(), formatIntegration(), expressiveCode({
 
     // You can use any of the themes bundled with Shiki by name,
     // specify a path to JSON theme file, or pass an instance
@@ -35,11 +36,7 @@ export default defineConfig({
       pluginLineNumbers(),
       pluginCollapsibleSections()
     ],
-  }),
-  mdx(),
-
-
-  ],
+  }), mdx(), tailwind()],
   vite: {
     build: {
       sourcemap: false,
