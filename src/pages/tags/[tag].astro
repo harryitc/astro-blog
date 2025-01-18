@@ -33,8 +33,9 @@ const { posts } = Astro.props;
       posts.map((post: any) => (
         <li>
           <BlogPost
-          // Vì đây là route cho nên lùi về 1 path để trỏ tới folder post
-            url={`../${post.id}`}
+          // https://example.site/astro-blog/tags/[name_tag]/
+          // suy ra https://example.site/astro-blog/posts/.../
+            url={`../../${post.id}`}
             title={post.title}
             pubDate={post.pubDate.toString().slice(0, 10)}
           />
