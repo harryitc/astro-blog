@@ -1,11 +1,12 @@
 import { PROCESS_ENV } from "@configs/process-env";
 
 let baseUrl = PROCESS_ENV.BASE_PATH;
-if (baseUrl && baseUrl.endsWith('/')) {
+if (baseUrl && baseUrl.length > 0 && baseUrl.endsWith('/')) {
   baseUrl = baseUrl.slice(0, -1);
 }
 
+console.log("baseUrl: " + baseUrl);
 
 export const MyPath = (path: string): string =>{
-  return (baseUrl === '/' ? '' : baseUrl) + "/" + path;
+  return (baseUrl === '/' ? '' : baseUrl) + '/' + (path ?? "");
 }

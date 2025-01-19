@@ -1,8 +1,14 @@
 ---
 import { getLatestCommitInfo } from "@utils/Git";
-import Social from "./Social.astro";
+import { MyPath } from "@utils/PathRelative";
+import { PROCESS_ENV } from "@configs/process-env";
 
 const ASTRO_VERSION = Astro.generator;
+
+const SITE_URL = PROCESS_ENV.SITE_URL;
+const BASE_PATH: string = MyPath("");
+
+const FEED_URL = `${SITE_URL + BASE_PATH + 'rss.xml'}`;
 
 const lastCommit = getLatestCommitInfo();
 ---
@@ -24,7 +30,7 @@ const lastCommit = getLatestCommitInfo();
             title="17th January, 8pm"
             target="_blank"
           >
-            { lastCommit.message }
+            {lastCommit.message}
           </a>
         </div>
         <div class="flex items-center gap-2">
@@ -89,7 +95,7 @@ const lastCommit = getLatestCommitInfo();
         <li>
           <a
             class="link-default link-nav flex items-center gap-2 text-base xs:text-lg"
-            href="/rss.xml"
+            href={FEED_URL}
             title="RSS feed for harryitc.github.io"
           >
             <svg

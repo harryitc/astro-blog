@@ -2,11 +2,13 @@
 import { Image } from "astro:assets";
 import Navigation from "./Navigation.astro";
 
-const URL_PAGE = PROCESS_ENV.SITE_URL;
-const HomePage = `${URL_PAGE}${PROCESS_ENV.BASE_PATH}`;
+const SITE_URL = PROCESS_ENV.SITE_URL;
+const BASE_PATH: string = MyPath("");
+const HomePage = `${SITE_URL + BASE_PATH}`;
 
 import myImage from "../assets/images/cuongdichoi.jpg";
 import { PROCESS_ENV } from "@configs/process-env";
+import { MyPath } from "@utils/PathRelative";
 ---
 
 <header id="main-header" class="group border-b border-base-300">

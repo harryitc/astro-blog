@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 
 type ProcessEnvType = {
-    SITE_URL?: string;
-    BASE_PATH?: string;
-    NODE_ENV?: string;
-    BASE_URL?: string;
+    SITE_URL: string;
+    BASE_PATH: string;
+    NODE_ENV: string;
+    BASE_URL: string;
 };
 
 // Note: all relative imports
@@ -37,9 +37,9 @@ export const LogEnv = (): void => {
 
 const processEnvData: ProcessEnvType = {
     SITE_URL: process.env.SITE_URL,
-    BASE_PATH: process.env.BASE_PATH,
+    BASE_PATH: process.env.BASE_PATH ?? "Error ENV",
     NODE_ENV: process.env.NODE_ENV,
-    BASE_URL: process.env.BASE_URL,
+    BASE_URL: process.env.BASE_URL ?? "Error ENV",
     // more env variables...
 };
 
