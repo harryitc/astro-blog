@@ -1,10 +1,10 @@
 ---
 import { MyPath } from "@utils/PathRelative";
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayoutV2 from "./BaseLayout-v2.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayoutV2 pageTitle={frontmatter.title}>
   <p>
     <strong>Written by</strong>: {frontmatter.author} on <em>
       {frontmatter.pubDate}
@@ -20,7 +20,7 @@ const { frontmatter } = Astro.props;
     }
   </div>
   <slot />
-</BaseLayout>
+</BaseLayoutV2>
 <style>
   a {
     color: #00539f;

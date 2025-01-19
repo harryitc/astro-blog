@@ -1,10 +1,10 @@
 ---
 import { MyPath } from "@utils/PathRelative";
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayoutV2 from "./BaseLayout-v2.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayoutV2 pageTitle={frontmatter.title}>
   <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
   <p><strong>Written by</strong>: {frontmatter.author}</p>
@@ -19,7 +19,7 @@ const { frontmatter } = Astro.props;
   </div>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
   <slot />
-</BaseLayout>
+</BaseLayoutV2>
 
 <style>
   a {

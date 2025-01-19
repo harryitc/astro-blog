@@ -1,10 +1,7 @@
 ---
 // Components
-import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "./BlogPost.astro";
-
-// Styles
-import "../styles/global.css";
+import BaseLayoutV2 from "@layouts/BaseLayout-v2.astro";
 import { AllPosts } from "src/content.config";
 
 const pageTitle = "My Astro Learning Blog";
@@ -12,7 +9,7 @@ const pageTitle = "My Astro Learning Blog";
 const allPosts = AllPosts();
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayoutV2 pageTitle={pageTitle}>
   <p>This is where I will post about my journey learning Astro.</p>
   <ul>
     {
@@ -23,4 +20,4 @@ const allPosts = AllPosts();
       ))
     }
   </ul>
-</BaseLayout>
+</BaseLayoutV2>

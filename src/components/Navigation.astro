@@ -1,7 +1,6 @@
 ---
-
 import { PROCESS_ENV } from "@configs/process-env";
-import type {IMenu } from "@interfaces/Menu.interface";
+import type { IMenu } from "@interfaces/Menu.interface";
 import { MyPath } from "@utils/PathRelative";
 
 const Menus: IMenu[] = [
@@ -12,10 +11,63 @@ const Menus: IMenu[] = [
 ];
 ---
 
-<div class="nav-links">
-  {
-    Menus.map((menu: IMenu) => {
-      return <a href={menu.url}>{menu.name}</a>;
-    })
-  }
-</div>
+<nav
+  class="select-none hidden md:block group-[.menu-open]:block mt-0 group-[.menu-open]:mt-2"
+  aria-label="Site navigation"
+>
+  <ul
+    class="flex gap-4 group-[.menu-open]:flex-col md:!flex-row md:items-center"
+  >
+    {
+      Menus.map((menu: IMenu) => {
+        return (
+          <li>
+            <a class="link-default link-nav" href={menu.url}>
+              {menu.name}
+            </a>
+          </li>
+        );
+      })
+    }
+    <li class="shrink-0">
+      <theme-toggle>
+        <button class="rounded-md p-2" type="button" role="switch">
+          <svg
+            width="1em"
+            height="1em"
+            class="inline-block dark:hidden text-primary w-6 h-6"
+            data-icon="mdi:white-balance-sunny"
+          >
+            <symbol id="ai:mdi:white-balance-sunny" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="m3.55 19.09l1.41 1.41l1.8-1.79l-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71l1.8 1.79l1.41-1.41l-1.79-1.8M20.45 5l-1.41-1.4l-1.8 1.79l1.42 1.42M13 1h-2v3h2M6.76 5.39L4.96 3.6L3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"
+              >
+              </path>
+            </symbol><use href="#ai:mdi:white-balance-sunny"></use>
+          </svg>
+          <svg
+            width="1em"
+            height="1em"
+            class="hidden dark:inline-block text-primary w-6 h-6"
+            data-icon="mdi:moon-waning-crescent"
+          >
+            <symbol id="ai:mdi:moon-waning-crescent" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M2 12a10 10 0 0 0 13 9.54a10 10 0 0 1 0-19.08A10 10 0 0 0 2 12"
+              >
+              </path>
+            </symbol><use href="#ai:mdi:moon-waning-crescent"></use>
+          </svg>
+        </button>
+      </theme-toggle>
+      <!-- <script
+            type="module"
+            src="/_astro/ThemeToggle.astro_astro_type_script_index_0_lang.mmR5rXN4.js"
+            data-astro-exec=""
+          >
+          </script> -->
+    </li>
+  </ul>
+</nav>

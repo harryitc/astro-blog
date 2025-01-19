@@ -1,9 +1,8 @@
 ---
 // Components
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayoutV2 from "@layouts/BaseLayout-v2.astro";
 
 // Styles
-import "../styles/global.css";
 
 // Variables
 const pageTitle = "About Me";
@@ -32,7 +31,7 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayoutV2 pageTitle={pageTitle}>
 
   <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
     h1 {
@@ -89,4 +88,4 @@ const textCase = "uppercase";
         <p>My goal is not 3 days.</p>
       )
     }
-</BaseLayout>
+</BaseLayoutV2>
