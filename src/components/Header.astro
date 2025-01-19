@@ -1,10 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
-import ThemeIcon from "./ThemeIcon.astro";
+
+const URL_PAGE = PROCESS_ENV.SITE_URL;
+const HomePage = `${URL_PAGE}/${PROCESS_ENV.BASE_PATH}`;
 
 import myImage from "../assets/images/cuongdichoi.jpg";
+import { PROCESS_ENV } from "@configs/process-env";
 ---
 
 <header id="main-header" class="group border-b border-base-300">
@@ -14,7 +16,7 @@ import myImage from "../assets/images/cuongdichoi.jpg";
     <div class="w-full md:w-auto flex justify-between items-center">
       <a
         class="link-default link-nav flex flex-row items-center gap-2 text-xl xs:text-2xl"
-        href="/"
+        href={HomePage}
       >
         <Image
           src={myImage}
