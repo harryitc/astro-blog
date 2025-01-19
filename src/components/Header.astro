@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Navigation from "./Navigation.astro";
 
 const URL_PAGE = PROCESS_ENV.SITE_URL;
-const HomePage = `${URL_PAGE}/${PROCESS_ENV.BASE_PATH}`;
+const HomePage = `${URL_PAGE}${PROCESS_ENV.BASE_PATH}`;
 
 import myImage from "../assets/images/cuongdichoi.jpg";
 import { PROCESS_ENV } from "@configs/process-env";
