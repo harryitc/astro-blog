@@ -5,13 +5,23 @@ import BaseLayoutV2 from "@layouts/BaseLayout-v2.astro";
 const pageTitle = "Home Page";
 
 // import { Code } from 'astro-expressive-code/components';
+
+// import the Image component and the image
+import { Image } from "astro:assets";
+import myImage from "../assets/images/cuongselfie.jpg"; // Image is 1600x900
 ---
 
 <BaseLayoutV2 pageTitle={pageTitle}>
   <h1 class="text-7xl font-bold mb-4">Hello and Welcome</h1>
   <h2 class="text-5xl font-semibold mb-6">My awesome blog subtitle</h2>
 
-  <img src="src/assets/images/cuongselfie.jpg" />
+  <!-- `alt` is mandatory on the Image component -->
+  <Image
+    src={myImage}
+    alt="Hello and welcome."
+    loading="eager"
+    decoding="async"
+  />
 
   <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayoutV2>
