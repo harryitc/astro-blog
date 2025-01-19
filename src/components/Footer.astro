@@ -1,10 +1,11 @@
 ---
+import { getLatestCommitInfo } from "@utils/Git";
 import Social from "./Social.astro";
 
 const ASTRO_VERSION = Astro.generator;
 
+const lastCommit = getLatestCommitInfo();
 ---
-
 
 <footer class="border-t border-base-300 py-8 px-4">
   <div class="max-w-6xl md:mx-auto flex justify-center md:justify-start">
@@ -19,20 +20,16 @@ const ASTRO_VERSION = Astro.generator;
           <label class="font-bold">Latest commit:</label>
           <a
             class="link-default link"
-            href="https://github.com/harryitc/harryitc.github.io/commit/53299d04c89bbe1407a3056b4f3fa6f8fc29b86d"
+            href={`https://github.com/harryitc/astro-blog/commit/${lastCommit.fullHash}`}
             title="17th January, 8pm"
             target="_blank"
           >
-            yarn upgrade
+            { lastCommit.message }
           </a>
         </div>
         <div class="flex items-center gap-2">
           <label class="font-bold">Design system:</label>
-          <a
-            class="link-default link"
-            href="/design/"
-            title="Design system"
-          >
+          <a class="link-default link" href="/design/" title="Design system">
             link
           </a>
         </div>
