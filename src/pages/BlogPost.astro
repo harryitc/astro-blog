@@ -1,11 +1,18 @@
 ---
 import { ReadingTime } from "@utils/Reading";
 import { Image } from "astro:assets";
+import type { PostCollections } from "src/content.config";
+import { DEFAULT_POSTS } from "src/content.config";
 
-const { post } = Astro.props;
+interface Props {
+  post: PostCollections;
+}
+
+const { post = DEFAULT_POSTS } = Astro.props;
+
 const formatPubTime = post.pubDate.toString().slice(0, 10);
 
-const readingTime = ReadingTime(post.id + '.md');
+const readingTime = ReadingTime(post.id + ".md");
 ---
 
 <article
