@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 
 // Styles
 import "../styles/global-v2.css";
+import { ClientRouter } from "astro:transitions";
 
 // Variables
 const { pageTitle } = Astro.props;
@@ -17,6 +18,7 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <ClientRouter />
   </head>
   <body
     class="relative flex flex-col min-h-screen min-w-80 bg-base-100 transition-colors duration-500"
