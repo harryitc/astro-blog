@@ -1,5 +1,6 @@
 ---
-import { PROCESS_ENV } from "@configs/process-env";
+// Link: https://tailwindui.com/components/application-ui/navigation/navbars
+
 import type { IMenu } from "@interfaces/Menu.interface";
 import { MyPath } from "@utils/PathRelative";
 
@@ -11,6 +12,20 @@ const Menus: IMenu[] = [
 ];
 ---
 
+<nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
+  <ul class="flex space-x-3">
+    {
+      Menus.map((menu) => (
+        <li>
+          <a class="hover:bg-gray-700 px-3 py-2 rounded hover:text-sky-500 dark:hover:text-sky-400" href={menu.url}>
+            {menu.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+<!-- 
 <nav
   class="select-none hidden md:block group-[.menu-open]:block mt-0 group-[.menu-open]:mt-2"
   aria-label="Site navigation"
@@ -62,12 +77,6 @@ const Menus: IMenu[] = [
           </svg>
         </button>
       </theme-toggle>
-      <!-- <script
-            type="module"
-            src="/_astro/ThemeToggle.astro_astro_type_script_index_0_lang.mmR5rXN4.js"
-            data-astro-exec=""
-          >
-          </script> -->
     </li>
   </ul>
-</nav>
+</nav> -->

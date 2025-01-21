@@ -2,117 +2,232 @@
 import { getLatestCommitInfo } from "@utils/Git";
 import { MyPath } from "@utils/PathRelative";
 import { PROCESS_ENV } from "@configs/process-env";
+import { Image } from "astro:assets";
 
 const ASTRO_VERSION = Astro.generator;
 
 const SITE_URL = PROCESS_ENV.SITE_URL;
 const BASE_PATH: string = MyPath("");
 
-const FEED_URL = `${SITE_URL + BASE_PATH + 'rss.xml'}`;
+const author = "Harryitc";
+
+const FEED_URL = `${SITE_URL + BASE_PATH + "rss.xml"}`;
+
+const currentYear = new Date().getFullYear() + 1;
+const COPYRIGHT = `2025 - ${currentYear}`;
+
+import myImage from "../assets/images/cuongdichoi.jpg";
 
 const lastCommit = getLatestCommitInfo();
 ---
 
-<footer class="border-t border-base-300 py-8 px-4">
-  <div class="max-w-6xl md:mx-auto flex justify-center md:justify-start">
-    <div
-      class="flex justify-between gap-4 flex-col-reverse md:flex-row md:w-full"
-    >
-      <!-- left column -->
-      <div
-        class="flex items-center gap-2 flex-wrap text-sm text-content whitespace-nowrap"
-      >
-        <div class="flex items-center gap-2">
-          <label class="font-bold">Latest commit:</label>
-          <a
-            class="link-default link"
-            href={`https://github.com/harryitc/astro-blog/commit/${lastCommit.fullHash}`}
-            title="17th January, 8pm"
-            target="_blank"
-          >
-            {lastCommit.message}
-          </a>
-        </div>
-        <div class="flex items-center gap-2">
-          <label class="font-bold">Design system:</label>
-          <a class="link-default link" href="/design/" title="Design system">
-            link
-          </a>
-        </div>
+<footer class="bg-gray-50 dark:bg-gray-800 antialiased">
+  <div class="p-4 py-6 mx-auto max-w-screen-xl md:p-8 lg:p-10">
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+      <div>
+        <h2
+          class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+        >
+          Company
+        </h2>
+        <ul class="text-gray-500 dark:text-gray-400">
+          <li class="mb-4">
+            <a href="#" class="hover:underline">About</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Careers</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Brand Center</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Blog</a>
+          </li>
+        </ul>
       </div>
-      <!-- right column -->
-      <ul class="flex gap-2 flex-wrap xs:flex-nowrap lg:items-center">
+      <div>
+        <h2
+          class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+        >
+          Help center
+        </h2>
+        <ul class="text-gray-500 dark:text-gray-400">
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Discord Server</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Twitter</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Facebook</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2
+          class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+        >
+          Legal
+        </h2>
+        <ul class="text-gray-500 dark:text-gray-400">
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Privacy Policy</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Licensing</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Terms</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2
+          class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+        >
+          Company
+        </h2>
+        <ul class="text-gray-500 dark:text-gray-400">
+          <li class="mb-4">
+            <a href="#" class="hover:underline">About</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Careers</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Brand Center</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2
+          class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+        >
+          Download
+        </h2>
+        <ul class="text-gray-500 dark:text-gray-400">
+          <li class="mb-4">
+            <a href="#" class="hover:underline">iOS</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Android</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">Windows</a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="hover:underline">MacOS</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <div class="text-center">
+      <a
+        href="javascript:void(0)"
+        class="flex cursor-default justify-center items-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white"
+      >
+        <Image
+          src={myImage}
+          loading="eager"
+          alt="Profile picture"
+          decoding="async"
+          class="mr-2 inline-block rounded-full object-cover w-8 h-8 shrink-0 select-none border border-base-300"
+        />
+        {author}
+      </a>
+      <span class="block text-sm text-center text-gray-500 dark:text-gray-400">
+        © {COPYRIGHT}
+        <a href="javascript:void(0)" class="hover:underline">{author}™</a>. All Rights Reserved.
+      </span>
+      <ul class="flex justify-center mt-5 space-x-5">
         <li>
           <a
-            class="link-default link-nav flex items-center gap-2 text-base xs:text-lg"
-            href="https://github.com/harryitc"
-            target="_blank"
-            rel="me noreferrer noopener"
-            title="@harryitc on Github"
+            href="https://www.facebook.com/cuong.harryitc/"
+            class="cursor-default text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
           >
             <svg
-              width="1em"
-              height="1em"
-              class="h-6 w-6 fill-current"
-              data-icon="mdi:github"
+              class="h-4 w-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 8 19"
             >
-              <symbol id="ai:mdi:github" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
-                >
-                </path>
-              </symbol><use href="#ai:mdi:github"></use>
+              <path
+                fill-rule="evenodd"
+                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                clip-rule="evenodd"
+              >
+              </path>
             </svg>
-            <span>Github</span>
           </a>
         </li>
         <li>
           <a
-            class="link-default link-nav flex items-center gap-2 text-base xs:text-lg"
-            href="https://www.linkedin.com/in/harryitc"
-            target="_blank"
-            rel="me noreferrer noopener"
-            title="Nemanja on LinkedIn"
+            href="javascript:void(0)"
+            class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
           >
             <svg
-              width="1em"
-              height="1em"
-              class="h-6 w-6 fill-current"
-              data-icon="mdi:linkedin"
+              class="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
             >
-              <symbol id="ai:mdi:linkedin" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"
-                >
-                </path>
-              </symbol><use href="#ai:mdi:linkedin"></use>
+              <path
+                fill="currentColor"
+                d="M12.186 8.672 18.743.947h-2.927l-5.005 5.9-4.44-5.9H0l7.434 9.876-6.986 8.23h2.927l5.434-6.4 4.82 6.4H20L12.186 8.672Zm-2.267 2.671L8.544 9.515 3.2 2.42h2.2l4.312 5.719 1.375 1.828 5.731 7.613h-2.2l-4.699-6.237Z"
+              >
+              </path>
             </svg>
-            <span>LinkedIn</span>
           </a>
         </li>
         <li>
           <a
-            class="link-default link-nav flex items-center gap-2 text-base xs:text-lg"
-            href={FEED_URL}
-            title="RSS feed for harryitc.github.io"
+            href="javascript:void(0)"
+            class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
           >
             <svg
-              width="1em"
-              height="1em"
-              class="h-6 w-6 fill-current"
-              data-icon="mdi:rss"
+              class="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
             >
-              <symbol id="ai:mdi:rss" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93z"
-                >
-                </path>
-              </symbol><use href="#ai:mdi:rss"></use>
+              <path
+                fill-rule="evenodd"
+                d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                clip-rule="evenodd"
+              >
+              </path>
             </svg>
-            <span>RSS Feed</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="javascript:void(0)"
+            class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+          >
+            <svg
+              class="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
+                clip-rule="evenodd"
+              >
+              </path>
+            </svg>
           </a>
         </li>
       </ul>

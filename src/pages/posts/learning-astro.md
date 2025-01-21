@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MyMarkdownLayout.astro
+layout: ../../layouts/PostLayout.astro
 title: "Learning About Markdown in Astro"
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"

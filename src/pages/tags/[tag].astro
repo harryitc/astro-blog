@@ -30,17 +30,10 @@ const { posts } = Astro.props;
   <p>Posts tagged with {tag}</p>
   <ul>
     {
-      posts.map((post: any) => (
-        <li>
-          <BlogPost
-          // https://example.site/astro-blog/tags/[name_tag]/
-          // suy ra https://example.site/astro-blog/posts/.../
-            url={`../../${post.id}`}
-            title={post.title}
-            pubDate={post.pubDate.toString().slice(0, 10)}
-          />
-        </li>
-      ))
+      posts.map((post: any) => {
+        const data = { ...post, id: `../${post.id}` };
+        return <BlogPost post={data} />;
+      })
     }
   </ul>
 </BaseLayoutV2>

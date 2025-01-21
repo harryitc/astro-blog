@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../layouts/PostLayout.astro
 title: "Code Highlighting"
 author: "Harryitc"
 description: "Tổng hợp các markdown highlighting"

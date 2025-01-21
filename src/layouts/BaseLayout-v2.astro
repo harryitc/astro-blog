@@ -11,7 +11,7 @@ import { ClientRouter } from "astro:transitions";
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -21,7 +21,7 @@ const { pageTitle } = Astro.props;
     <ClientRouter />
   </head>
   <body
-    class="relative flex flex-col min-h-screen min-w-80 bg-base-100 transition-colors duration-500"
+    class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 relative flex flex-col min-h-screen min-w-80 transition-colors duration-500"
   >
     <Header />
 

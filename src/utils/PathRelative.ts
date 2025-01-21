@@ -5,8 +5,6 @@ if (baseUrl && baseUrl.length > 0 && baseUrl.endsWith('/')) {
   baseUrl = baseUrl.slice(0, -1);
 }
 
-console.log("baseUrl: " + baseUrl);
-
 export const MyPath = (path: string): string =>{
   return (baseUrl === '/' ? '' : baseUrl) + '/' + (path ?? "");
 }

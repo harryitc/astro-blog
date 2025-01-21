@@ -1,5 +1,6 @@
 ---
 // Components
+import { Image } from "astro:assets";
 import BlogPost from "./BlogPost.astro";
 import BaseLayoutV2 from "@layouts/BaseLayout-v2.astro";
 import { AllPosts } from "src/content.config";
@@ -10,14 +11,82 @@ const allPosts = AllPosts();
 ---
 
 <BaseLayoutV2 pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allPosts.map((post: any) => (
-        <li>
-          <BlogPost url={`../${post.id}`} title={post.title} pubDate={post.pubDate.toString().slice(0,10)}/>
-        </li>
-      ))
-    }
-  </ul>
+  <h1 class="text-5xl">Blog</h1>
+
+  <section class="flex-grow flex flex-col">
+    <div class="flex flex-col">
+      {
+        allPosts.map((post: any) => {
+          const data = { ...post, id: `../${post.id}` };
+          return <BlogPost post={data} />;
+        })
+      }
+    </div>
+    <!-- <div class="mt-auto">
+      <div class="flex items-center justify-end xs:justify-between gap-4 mt-6">
+        <p class="b-p hidden xs:inline-block text-base">
+          Showing
+          <span class="font-bold">1</span>
+          to
+          <span class="font-bold">3</span>
+          of
+          <span class="font-bold">4</span>
+          results
+        </p><nav
+          aria-label="pages"
+          class="flex items-center justify-end gap-4 text-xl"
+        >
+          <span class="link-default link link-disabled" href="/blog">
+            <svg width="1em" height="1em" data-icon="mdi:chevron-double-left">
+              <symbol id="ai:mdi:chevron-double-left" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M18.41 7.41L17 6l-6 6l6 6l1.41-1.41L13.83 12zm-6 0L11 6l-6 6l6 6l1.41-1.41L7.83 12z"
+                >
+                </path>
+              </symbol><use href="#ai:mdi:chevron-double-left"></use>
+            </svg>
+          </span><span class="link-default link link-disabled">
+            <svg width="1em" height="1em" data-icon="mdi:chevron-left">
+              <symbol id="ai:mdi:chevron-left" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6z"
+                >
+                </path>
+              </symbol><use href="#ai:mdi:chevron-left"></use>
+            </svg>
+          </span><span
+            class="link-default link link-disabled underline font-semibold"
+            href="/blog"
+          >
+            1
+          </span><a class="link-default link" href="/blog/2">2</a><a
+            class="link-default link"
+            href="/blog/2"
+          >
+            <svg width="1em" height="1em" data-icon="mdi:chevron-right">
+              <symbol id="ai:mdi:chevron-right" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z"
+                >
+                </path>
+              </symbol><use href="#ai:mdi:chevron-right"></use>
+            </svg>
+          </a><a class="link-default link" href="/blog/2">
+            <svg width="1em" height="1em" data-icon="mdi:chevron-double-right">
+              <symbol id="ai:mdi:chevron-double-right" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M5.59 7.41L7 6l6 6l-6 6l-1.41-1.41L10.17 12zm6 0L13 6l6 6l-6 6l-1.41-1.41L16.17 12z"
+                >
+                </path>
+              </symbol><use href="#ai:mdi:chevron-double-right"></use>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </div> -->
+  </section>
 </BaseLayoutV2>

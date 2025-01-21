@@ -24,8 +24,11 @@
     "git-last-commit": "^1.0.1",
     "object-treeify": "^4.0.1",
     "preact": "^10.25.4",
+    "react-simple-typewriter": "^5.0.1",
+    "reading-time": "^1.5.0",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
