@@ -4,28 +4,28 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 // Styles
-import "../styles/global-v2.css";
-import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+// import { ClientRouter } from "astro:transitions";
 
 // Variables
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="en" class="dark">
+<html lang="en" class="">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
   </head>
   <body
     class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 relative flex flex-col min-h-screen min-w-80 transition-colors duration-500"
   >
     <Header />
 
-    <main class="flex-grow flex flex-col w-full max-w-4xl mx-auto py-4 lg:py-8">
+    <main class="flex-grow flex flex-col w-full max-w-4xl mx-auto py-4 px-4 lg:py-8">
       <slot />
     </main>
 
