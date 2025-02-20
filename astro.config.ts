@@ -10,7 +10,7 @@ import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-s
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import expressiveCode from 'astro-expressive-code';
 
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from "@tailwindcss/vite";
 
 const { SITE_URL, BASE_PATH } = PROCESS_ENV;
 
@@ -36,8 +36,11 @@ export default defineConfig({
       pluginLineNumbers(),
       pluginCollapsibleSections()
     ],
-  }), mdx(), tailwind()],
+  }), mdx()],
   vite: {
+    plugins: [
+      tailwindcss(),
+    ],
     build: {
       sourcemap: false,
     },
