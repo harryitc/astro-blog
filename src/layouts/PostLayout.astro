@@ -3,10 +3,11 @@ import BaseLayoutV2 from "./BaseLayout-v2.astro";
 import Comment from "@components/Comment.astro";
 import RelativeArticle from "@components/RelativeArticle.astro";
 import SubscribeEmail from "@components/SubscribeEmail.astro";
+import { DatetimeUtils } from "@utils/Datetime";
 
 const { frontmatter } = Astro.props;
 
-const formatPubTime = frontmatter.pubDate.toString().slice(0, 10);
+const formatPubTime = DatetimeUtils.formatDateToDDMMYYYY(new Date(frontmatter.pubDate));
 ---
 
 <BaseLayoutV2 pageTitle={frontmatter.title}>

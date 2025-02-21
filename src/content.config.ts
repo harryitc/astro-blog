@@ -1,5 +1,6 @@
 import { defineCollection, getCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { DatetimeUtils } from '@utils/Datetime';
 
 export interface PostCollections {
   id: string;
@@ -53,13 +54,19 @@ console.warn(`allBlogPostsFromCollections (${allBlogPostsFromCollections.length}
 //   console.log(`-> ${index}. ${post.data.title} (${post.filePath})`);
 // })
 
-export const AllPosts = (): PostCollections[] => allBlogPostsFromCollections?.map((post, index) => {
-  return {
-    id: `posts/${post.id}`,
-    ...post.data,
-    pubDate: post.data.pubDate.toISOString().split('T')[0], // Format date to YYYY-MM-DD
-  };
-});
+export const AllPosts = (): PostCollections[] => allBlogPostsFromCollections
+  ?.map((post, index) => {
+    return {
+      id: `posts/${post.id}`,
+      ...post.data,
+      pubDate: DatetimeUtils.formatDateToDDMMYYYY(post.data.pubDate),
+    };
+  })
+  .sort((a, b) => {
+    const dateA = DatetimeUtils.parseDateFromDDMMYYYY(a.pubDate);
+    const dateB = DatetimeUtils.parseDateFromDDMMYYYY(b.pubDate);
+    return dateB.getTime() - dateA.getTime();
+  });
 
 export const DEFAULT_POSTS: PostCollections =
 {
@@ -67,7 +74,7 @@ export const DEFAULT_POSTS: PostCollections =
   layout: '../../layouts/PostLayout.astro',
   title: 'NaN',
   description: 'NaN',
-  pubDate: new Date().toISOString().split('T')[0], // Format date to YYYY-MM-DD
+  pubDate: DatetimeUtils.formatDateToDDMMYYYY(new Date()),
   tags: [],
   author: 'NaN',
   image: {
