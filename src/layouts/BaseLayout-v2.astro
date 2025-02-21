@@ -5,7 +5,6 @@ import Footer from "../components/Footer.astro";
 
 // Styles
 import "../styles/global.css";
-// import { ClientRouter } from "astro:transitions";
 
 // Variables
 const { pageTitle } = Astro.props;
@@ -21,12 +20,16 @@ const { pageTitle } = Astro.props;
     <!-- <ClientRouter /> -->
   </head>
   <body
-    class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 relative flex flex-col min-h-screen min-w-80 transition-colors duration-500"
+    class="antialiased text-slate-700 dark:text-slate-400 relative flex flex-col min-h-screen min-w-80 transition-colors duration-500"
   >
-    <Header />
+    <Header  />
 
-    <main class="flex-grow flex flex-col w-full max-w-4xl mx-auto py-4 px-4 lg:py-8">
-      <slot />
+    <main
+      class="bg-gradient-to-r from-green-50/50 to-blue-50/50 dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-700 flex-grow flex flex-col w-full"
+    >
+      <div class="max-w-4xl mx-auto py-4 px-4 lg:py-8">
+        <slot />
+      </div>
     </main>
 
     <Footer />
